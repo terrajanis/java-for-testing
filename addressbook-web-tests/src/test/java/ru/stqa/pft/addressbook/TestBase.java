@@ -1,8 +1,10 @@
 package ru.stqa.pft.addressbook;
 
+import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
+import ru.stqa.pft.addressbook.models.ContactInformation;
 
 public class TestBase {
 
@@ -19,5 +21,6 @@ public class TestBase {
         app.logout();
         app.stop();
     }
+
 
 }
