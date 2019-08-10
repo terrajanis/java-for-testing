@@ -1,11 +1,13 @@
-package ru.stqa.pft.addressbook;
+package ru.stqa.pft.addressbook.tests;
 
 import java.util.concurrent.TimeUnit;
 import org.testng.annotations.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import ru.stqa.pft.addressbook.TestBase;
+import ru.stqa.pft.addressbook.models.ContactInformation;
 
-public class NewContact {
+public class NewContactTest extends TestBase {
   private WebDriver wd;
 
   @BeforeMethod(alwaysRun = true)
