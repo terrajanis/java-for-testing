@@ -8,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
-    WebDriver wd;
+    public WebDriver wd;
 
     private ContactHelper contactHelper;
     private GroupHelper groupHelper;
@@ -55,4 +55,7 @@ public class ApplicationManager {
         return contactHelper;
     }
 
+    public WebDriver.TargetLocator switchTo() {
+        return null;
+    }
 }

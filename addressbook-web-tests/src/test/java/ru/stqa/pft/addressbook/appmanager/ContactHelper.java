@@ -32,4 +32,21 @@ public class ContactHelper extends HelperBase{
         type(By.name("address2"), contactInformation.getAddress2());
         type(By.name("phone2"), contactInformation.getPhone2());
     }
+
+    public void initContactModification() {
+        click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Tokyo111YorozuyaThis'])[1]/following::img[2]"));
+    }
+
+    public void updateContact() {
+        click(By.xpath("(//input[@name='update'])[2]"));
+    }
+
+    public void selectContact() {
+        click(By.id("6"));
+    }
+
+    public void pressDeleteButton() {
+        click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Select all'])[1]/following::input[2]"));
+    }
+
 }
