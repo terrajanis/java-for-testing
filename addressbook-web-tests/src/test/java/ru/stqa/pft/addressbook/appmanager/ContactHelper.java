@@ -42,7 +42,7 @@ public class ContactHelper extends HelperBase{
     }
 
     public void selectContact() {
-        click(By.id("6"));
+        click(By.name("selected[]"));
     }
 
     public void pressDeleteButton() {
