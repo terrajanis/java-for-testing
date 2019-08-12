@@ -12,7 +12,7 @@ public class ContactHelper extends HelperBase{
     }
 
     public void sumbitNewContact() {
-        click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]"));
+        click(By.xpath("(//input[@name='submit'])[2]"));
     }
 
    public void fillNewContact(ContactInformation contactInformation) {
@@ -34,7 +34,7 @@ public class ContactHelper extends HelperBase{
     }
 
     public void initContactModification() {
-        click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Tokyo111YorozuyaThis'])[1]/following::img[2]"));
+        click(By.cssSelector("img[alt=\"Edit\"]"));
     }
 
     public void updateContact() {
@@ -46,7 +46,7 @@ public class ContactHelper extends HelperBase{
     }
 
     public void pressDeleteButton() {
-        click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Select all'])[1]/following::input[2]"));
+        click(By.xpath("//input[@value='Delete']"));
     }
 
 }
