@@ -27,10 +27,6 @@ public class ContactHelper extends HelperBase{
         type(By.name("work"), contactInformation.getWork());
         type(By.name("fax"), contactInformation.getFax());
         type(By.name("email"), contactInformation.getEmail());
-        type(By.name("email2"), contactInformation.getEmail2());
-        type(By.name("email3"), contactInformation.getEmail3());
-        type(By.name("address2"), contactInformation.getAddress2());
-        type(By.name("phone2"), contactInformation.getPhone2());
     }
 
     public void initContactModification() {
