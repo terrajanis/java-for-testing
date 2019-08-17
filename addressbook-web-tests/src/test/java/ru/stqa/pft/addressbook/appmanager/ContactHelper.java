@@ -7,11 +7,12 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.models.ContactInformation;
 
 public class ContactHelper extends HelperBase{
-    private WebDriver wd;
 
     public ContactHelper(WebDriver wd) {
         super(wd);
     }
+
+    NavigationHelper navigationHelper = new NavigationHelper(wd);
 
     public void sumbitNewContact() {
         click(By.xpath("(//input[@name='submit'])[2]"));
@@ -52,4 +53,14 @@ public class ContactHelper extends HelperBase{
         click(By.xpath("//input[@value='Delete']"));
     }
 
+    public void createContact (ContactInformation contact) {
+        navigationHelper.goToAddNewContact();
+       fillNewContact(contact, true);
+        sumbitNewContact();
+        navigationHelper.goToHomePage();
+    }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.name("selected[]"));
+    }
 }
