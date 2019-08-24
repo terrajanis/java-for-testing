@@ -119,14 +119,12 @@ public class ContactInformation {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ContactInformation that = (ContactInformation) o;
-        return id == that.id &&
-                Objects.equals(firstname, that.firstname) &&
-                Objects.equals(lastname, that.lastname) &&
-                Objects.equals(address, that.address);
+        return Objects.equals(firstname, that.firstname) &&
+                Objects.equals(lastname, that.lastname);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstname, lastname, address);
+        return Objects.hash(firstname, lastname);
     }
 }
