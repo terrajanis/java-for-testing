@@ -10,7 +10,7 @@ import java.util.List;
 public class ContactModificationTest extends TestBase {
     @Test
     public void testContactModification(){
-        if(! app.getContactHelper().isThereAContact()) {
+        if(app.getGroupHelper().getGroupList().size() == 0) {
             app.getContactHelper().createContact(new ContactInformation("Gintoki", "Sakata", "Gin-san", "Chief", "Yorozuya", "Kabuki-cho", "Tokyo", "111", "Yorozuya", "1111", "gin-san@yandex.ru", "test"));
         }
         List<ContactInformation> before = app.getContactHelper().getContactList();
