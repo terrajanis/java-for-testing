@@ -1,32 +1,59 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.models.ContactInformation;
+import ru.stqa.pft.addressbook.models.Contacts;
 
-import java.util.Comparator;
-import java.util.List;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactModificationTest extends TestBase {
+
+    @BeforeMethod
+    public void ensurePreconditions() {
+        if(app.getContactHelper().set().size() == 0) {
+            app.getContactHelper().create(new ContactInformation().
+                    withFirstname("Gintoki").
+                    withLastname("Sakata").
+                    withNickname("Gin-san").
+                    withTitle("Chief").
+                    withCompany("Yorozuya").
+                    withAddress("Kabuki-cho").
+                    withHome("Tokyo").
+                    withMobile("111").
+                    withWork("Yorozuya").
+                    withFax("1111").
+                    withEmail("gin-san@yandex.ru").
+                    withGroup("test"));
+        }
+    }
+
     @Test
     public void testContactModification(){
-        if(! app.getContactHelper().isThereAContact()) {
-            app.getContactHelper().createContact(new ContactInformation("Gintoki", "Sakata", "Gin-san", "Chief", "Yorozuya", "Kabuki-cho", "Tokyo", "111", "Yorozuya", "1111", "gin-san@yandex.ru", "test"));
-        }
-        List<ContactInformation> before = app.getContactHelper().getContactList();
-        app.getContactHelper().initContactModification(before.size() - 1);
-        ContactInformation contact = new ContactInformation(before.get(before.size() - 1).getId(),"Kotaro", "Sakata", "Gin-san", "Danna", "Yorozuya", "Kabuki-cho", "Tokyo", "111", "Yorozuya", "1111", "gin-san@yandex.ru",  null);
-        app.getContactHelper().fillNewContact(contact, false);
-        app.getContactHelper().updateContact();
-        app.getNavigationHelper().goToHomePage();
-        List<ContactInformation> after = app.getContactHelper().getContactList();
-        Assert.assertEquals(after.size(), before.size());
 
-        before.remove(before.size() - 1);
-        before.add(contact);
-        Comparator<? super ContactInformation> byID = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
-        before.sort(byID);
-        after.sort(byID);
-        Assert.assertEquals(before, after);
+        Contacts before = app.getContactHelper().set();
+        ContactInformation modifiedContact = before.iterator().next();
+        app.getContactHelper().initModificationById(modifiedContact.getId());
+        ContactInformation contact = new ContactInformation().
+                withId(modifiedContact.getId()).
+                withFirstname("Kotaro").
+                withLastname("Katsura").
+                withNickname("Zura").
+                withTitle("Leader").
+                withCompany("Joui").
+                withAddress("Kabuki-cho").
+                withHome("Tokyo").
+                withMobile("111").
+                withWork("Joui").
+                withFax("1111").
+                withEmail("elizabeth@yandex.ru");
+        app.getContactHelper().fillNewContact(contact, false);
+        app.getContactHelper().update();
+        app.getNavigationHelper().goToHomePage();
+        Contacts after = app.getContactHelper().set();
+        assertThat(after.size(), equalTo(before.size()));
+
+        assertThat(before.withAdded(contact).without(modifiedContact), equalTo(after));
     }
 }

@@ -5,57 +5,21 @@ import java.util.Objects;
 public class ContactInformation {
 
     private int id;
-    private final String firstname;
-    private final String lastname;
-    private final String nickname;
-    private final String title;
-    private final String company;
-    private final String address;
-    private final String home;
-    private final String mobile;
-    private final String work;
-    private final String fax;
-    private final String email;
+    private String firstname;
+    private String lastname;
+    private String nickname;
+    private String title;
+    private String company;
+    private String address;
+    private String home;
+    private String mobile;
+    private String work;
+    private String fax;
+    private String email;
     private String group;
-
-    public ContactInformation(String firstname, String lastname, String nickname, String title, String company, String address, String home, String mobile, String work, String fax, String email, String group) {
-        this.id = 0;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.nickname = nickname;
-        this.title = title;
-        this.company = company;
-        this.address = address;
-        this.home = home;
-        this.mobile = mobile;
-        this.work = work;
-        this.fax = fax;
-        this.email = email;
-        this.group = group;
-    }
-
-    public ContactInformation(int id, String firstname, String lastname, String nickname, String title, String company, String address, String home, String mobile, String work, String fax, String email, String group) {
-        this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.nickname = nickname;
-        this.title = title;
-        this.company = company;
-        this.address = address;
-        this.home = home;
-        this.mobile = mobile;
-        this.work = work;
-        this.fax = fax;
-        this.email = email;
-        this.group = group;
-    }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getFirstname() {
@@ -106,6 +70,71 @@ public class ContactInformation {
         return group;
     }
 
+    public ContactInformation withId(int id) {
+        this.id = id;
+        return this;
+    }
+
+    public ContactInformation withFirstname(String firstname) {
+        this.firstname = firstname;
+        return this;
+    }
+
+    public ContactInformation withLastname(String lastname) {
+        this.lastname = lastname;
+        return this;
+    }
+
+    public ContactInformation withNickname(String nickname) {
+        this.nickname = nickname;
+        return this;
+    }
+
+    public ContactInformation withTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public ContactInformation withCompany(String company) {
+        this.company = company;
+        return this;
+    }
+
+    public ContactInformation withAddress(String address) {
+        this.address = address;
+        return this;
+    }
+
+    public ContactInformation withHome(String home) {
+        this.home = home;
+        return this;
+    }
+
+    public ContactInformation withMobile(String mobile) {
+        this.mobile = mobile;
+        return this;
+    }
+
+    public ContactInformation withWork(String work) {
+        this.work = work;
+        return this;
+    }
+
+    public ContactInformation withFax(String fax) {
+        this.fax = fax;
+        return this;
+    }
+
+    public ContactInformation withEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public ContactInformation withGroup(String group) {
+        this.group = group;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "ContactInformation{" +
@@ -119,12 +148,13 @@ public class ContactInformation {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ContactInformation that = (ContactInformation) o;
-        return Objects.equals(firstname, that.firstname) &&
+        return id == that.id &&
+                Objects.equals(firstname, that.firstname) &&
                 Objects.equals(lastname, that.lastname);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstname, lastname);
+        return Objects.hash(id, firstname, lastname);
     }
 }
