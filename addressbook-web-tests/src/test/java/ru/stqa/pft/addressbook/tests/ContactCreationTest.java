@@ -19,16 +19,18 @@ public class ContactCreationTest extends TestBase {
             withNickname("Gin-san").
             withTitle("Chief").
             withCompany("Yorozuya").
-            withAddress("Kabuki-cho").
+            withAddress("Japan" + "\n" + "Tokyo" + "\n" + "Kabuki-cho").
             withHome("123").
             withMobile("111").
             withWork("321").
             withFax("1111").
             withEmail("gin-san@yandex.ru").
+            withEmail2("kagura-chan@yandex.ru").
+            withEmail3("shinpachi@yandex.ru").
             withGroup("test");
     app.getContactHelper().create(contact);
+    assertThat(app.getContactHelper().count(), equalTo(before.size() + 1));
     Contacts after = app.getContactHelper().all();
-    assertThat(after.size(), equalTo(before.size() + 1));
     assertThat(after, equalTo(
             before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
 

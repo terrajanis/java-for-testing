@@ -19,12 +19,14 @@ public class ContactDeletionTest extends TestBase {
                     withNickname("Gin-san").
                     withTitle("Chief").
                     withCompany("Yorozuya").
-                    withAddress("Kabuki-cho").
+                    withAddress("Japan" + "\n" + "Tokyo" + "\n" + "Kabuki-cho").
                     withHome("44444").
                     withMobile("111").
                     withWork("333232").
                     withFax("1111").
                     withEmail("gin-san@yandex.ru").
+                    withEmail2("kagura-chan@yandex.ru").
+                    withEmail3("shinpachi@yandex.ru").
                     withGroup("test"));
         }
     }
@@ -33,11 +35,10 @@ public class ContactDeletionTest extends TestBase {
     public void testContactDeletion(){
         Contacts before = app.getContactHelper().all();
        ContactInformation deletedContact = before.iterator().next();
-        app.getContactHelper().selectById(deletedContact.getId());
-        app.getContactHelper().pressDeleteButton();
-        app.wd.switchTo().alert().accept();
+        app.getContactHelper().delete(deletedContact);
+        assertThat(app.getContactHelper().count(), equalTo(before.size() - 1));
         Contacts after = app.getContactHelper().all();
-        assertThat(after.size(), equalTo(before.size() - 1));
        assertThat(before.without(deletedContact), equalTo(after));
     }
+
 }

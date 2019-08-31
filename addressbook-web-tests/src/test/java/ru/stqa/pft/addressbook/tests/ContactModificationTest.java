@@ -19,12 +19,14 @@ public class ContactModificationTest extends TestBase {
                     withNickname("Gin-san").
                     withTitle("Chief").
                     withCompany("Yorozuya").
-                    withAddress("Kabuki-cho").
+                    withAddress("Japan" + "\n" + "Tokyo" + "\n" + "Kabuki-cho").
                     withHome("4444").
                     withMobile("111").
                     withWork("321").
                     withFax("1111").
                     withEmail("gin-san@yandex.ru").
+                    withEmail2("kagura-chan@yandex.ru").
+                    withEmail3("shinpachi@yandex.ru").
                     withGroup("test"));
         }
     }
@@ -34,7 +36,6 @@ public class ContactModificationTest extends TestBase {
 
         Contacts before = app.getContactHelper().all();
         ContactInformation modifiedContact = before.iterator().next();
-        app.getContactHelper().initModificationById(modifiedContact.getId());
         ContactInformation contact = new ContactInformation().
                 withId(modifiedContact.getId()).
                 withFirstname("Kotaro").
@@ -42,18 +43,19 @@ public class ContactModificationTest extends TestBase {
                 withNickname("Zura").
                 withTitle("Leader").
                 withCompany("Joui").
-                withAddress("Kabuki-cho").
+                withAddress("Japan" + "\n" + "Tokyo" + "\n" + "Kabuki-cho").
                 withHome("2323").
                 withMobile("111").
                 withWork("4444").
                 withFax("1111").
-                withEmail("elizabeth@yandex.ru");
-        app.getContactHelper().fillNewContact(contact, false);
-        app.getContactHelper().update();
-        app.getNavigationHelper().goToHomePage();
+                withEmail("elizabeth@yandex.ru").
+                withEmail2("jouiforever@yandex.ru").
+                withEmail3("jouiforever@yandex.ru");
+        app.getContactHelper().modify(modifiedContact, contact);
+        assertThat(app.getContactHelper().count(), equalTo(before.size()));
         Contacts after = app.getContactHelper().all();
-        assertThat(after.size(), equalTo(before.size()));
-
         assertThat(before.withAdded(contact).without(modifiedContact), equalTo(after));
     }
+
+
 }

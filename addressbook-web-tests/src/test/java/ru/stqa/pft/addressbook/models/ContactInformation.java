@@ -16,7 +16,12 @@ public class ContactInformation {
     private String work;
     private String fax;
     private String email;
+    private String email2;
+    private String email3;
     private String group;
+    private String allPhones;
+    private String allEmails;
+
 
     public int getId() {
         return id;
@@ -68,6 +73,10 @@ public class ContactInformation {
 
     public String getGroup() {
         return group;
+    }
+
+    public String getAllPhones() {
+        return allPhones;
     }
 
     public ContactInformation withId(int id) {
@@ -132,6 +141,38 @@ public class ContactInformation {
 
     public ContactInformation withGroup(String group) {
         this.group = group;
+        return this;
+    }
+
+    public ContactInformation withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
+        return this;
+    }
+
+    public String getEmail2() {
+        return email2;
+    }
+
+    public ContactInformation withEmail2(String email2) {
+        this.email2 = email2;
+        return this;
+    }
+
+    public String getEmail3() {
+        return email3;
+    }
+
+    public ContactInformation withEmail3(String email3) {
+        this.email3 = email3;
+        return this;
+    }
+
+    public String getAllEmails() {
+        return allEmails;
+    }
+
+    public ContactInformation withAllEmails(String allEmails) {
+        this.allEmails = allEmails;
         return this;
     }
 
