@@ -12,7 +12,7 @@ public class ContactModificationTest extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() {
-        if(app.getContactHelper().set().size() == 0) {
+        if(app.getContactHelper().all().size() == 0) {
             app.getContactHelper().create(new ContactInformation().
                     withFirstname("Gintoki").
                     withLastname("Sakata").
@@ -20,9 +20,9 @@ public class ContactModificationTest extends TestBase {
                     withTitle("Chief").
                     withCompany("Yorozuya").
                     withAddress("Kabuki-cho").
-                    withHome("Tokyo").
+                    withHome("4444").
                     withMobile("111").
-                    withWork("Yorozuya").
+                    withWork("321").
                     withFax("1111").
                     withEmail("gin-san@yandex.ru").
                     withGroup("test"));
@@ -32,7 +32,7 @@ public class ContactModificationTest extends TestBase {
     @Test
     public void testContactModification(){
 
-        Contacts before = app.getContactHelper().set();
+        Contacts before = app.getContactHelper().all();
         ContactInformation modifiedContact = before.iterator().next();
         app.getContactHelper().initModificationById(modifiedContact.getId());
         ContactInformation contact = new ContactInformation().
@@ -43,15 +43,15 @@ public class ContactModificationTest extends TestBase {
                 withTitle("Leader").
                 withCompany("Joui").
                 withAddress("Kabuki-cho").
-                withHome("Tokyo").
+                withHome("2323").
                 withMobile("111").
-                withWork("Joui").
+                withWork("4444").
                 withFax("1111").
                 withEmail("elizabeth@yandex.ru");
         app.getContactHelper().fillNewContact(contact, false);
         app.getContactHelper().update();
         app.getNavigationHelper().goToHomePage();
-        Contacts after = app.getContactHelper().set();
+        Contacts after = app.getContactHelper().all();
         assertThat(after.size(), equalTo(before.size()));
 
         assertThat(before.withAdded(contact).without(modifiedContact), equalTo(after));

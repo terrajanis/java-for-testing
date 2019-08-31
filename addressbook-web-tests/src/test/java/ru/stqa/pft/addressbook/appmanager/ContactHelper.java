@@ -66,19 +66,31 @@ public class ContactHelper extends HelperBase{
         navigationHelper.goToHomePage();
     }
 
+    public ContactInformation infoFromEditForm(ContactInformation contact) {
+        initModificationById(contact.getId());
+        String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
+        String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+        String home = wd.findElement(By.name("home")).getAttribute("value");
+        String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
+        String work = wd.findElement(By.name("work")).getAttribute("value");
+        wd.navigate().back();
+        return new ContactInformation().withFirstname(firstname).withLastname(lastname).withHome(home).withMobile(mobile).withWork(work);
+    }
+
     public boolean isThereAContact() {
         return isElementPresent(By.name("selected[]"));
     }
 
-    public Contacts set() {
+    public Contacts all() {
         Contacts contacts = new Contacts();
         List<WebElement> elements = wd.findElements(By.name("entry"));
         for (WebElement element : elements) {
             List<WebElement> elements2 = element.findElements(By.tagName("td"));
+            int id = Integer.parseInt(elements2.get(0).findElement(By.tagName("input")).getAttribute("value"));
             String firstname = elements2.get(2).getText();
             String lastname = elements2.get(1).getText();
-            int id = Integer.parseInt(elements2.get(0).findElement(By.tagName("input")).getAttribute("value"));
-            ContactInformation contact = new ContactInformation().withId(id).withFirstname(firstname).withLastname(lastname);
+            String[] phones = elements2.get(5).getText().split("\n");
+            ContactInformation contact = new ContactInformation().withId(id).withFirstname(firstname).withLastname(lastname).withHome(phones[0]).withMobile(phones[1]).withWork(phones[2]);
             contacts.add(contact);
         }
         return contacts;

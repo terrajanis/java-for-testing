@@ -12,7 +12,7 @@ public class ContactDeletionTest extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() {
-        if(app.getContactHelper().set().size() == 0) {
+        if(app.getContactHelper().all().size() == 0) {
             app.getContactHelper().create(new ContactInformation().
                     withFirstname("Gintoki").
                     withLastname("Sakata").
@@ -20,9 +20,9 @@ public class ContactDeletionTest extends TestBase {
                     withTitle("Chief").
                     withCompany("Yorozuya").
                     withAddress("Kabuki-cho").
-                    withHome("Tokyo").
+                    withHome("44444").
                     withMobile("111").
-                    withWork("Yorozuya").
+                    withWork("333232").
                     withFax("1111").
                     withEmail("gin-san@yandex.ru").
                     withGroup("test"));
@@ -31,12 +31,12 @@ public class ContactDeletionTest extends TestBase {
 
     @Test
     public void testContactDeletion(){
-        Contacts before = app.getContactHelper().set();
+        Contacts before = app.getContactHelper().all();
        ContactInformation deletedContact = before.iterator().next();
         app.getContactHelper().selectById(deletedContact.getId());
         app.getContactHelper().pressDeleteButton();
         app.wd.switchTo().alert().accept();
-        Contacts after = app.getContactHelper().set();
+        Contacts after = app.getContactHelper().all();
         assertThat(after.size(), equalTo(before.size() - 1));
        assertThat(before.without(deletedContact), equalTo(after));
     }

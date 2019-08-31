@@ -12,7 +12,7 @@ public class ContactCreationTest extends TestBase {
 
   @Test
   public void testNewContact() throws Exception {
-    Contacts before = app.getContactHelper().set();
+    Contacts before = app.getContactHelper().all();
     ContactInformation contact = new ContactInformation().
             withFirstname("Gintoki").
             withLastname("Sakata").
@@ -20,14 +20,14 @@ public class ContactCreationTest extends TestBase {
             withTitle("Chief").
             withCompany("Yorozuya").
             withAddress("Kabuki-cho").
-            withHome("Tokyo").
+            withHome("123").
             withMobile("111").
-            withWork("Yorozuya").
+            withWork("321").
             withFax("1111").
             withEmail("gin-san@yandex.ru").
             withGroup("test");
     app.getContactHelper().create(contact);
-    Contacts after = app.getContactHelper().set();
+    Contacts after = app.getContactHelper().all();
     assertThat(after.size(), equalTo(before.size() + 1));
     assertThat(after, equalTo(
             before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
