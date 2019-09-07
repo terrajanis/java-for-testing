@@ -1,5 +1,47 @@
 [
-  {},
-  {},
-  {}
+  {
+    "firstname": "Gintoki0",
+    "lastname": "Sakata0",
+    "nickname": "Gin-san0",
+    "title": "Chief0",
+    "company": "Yorozuya0",
+    "address": "Japan\n Tokyo\n Kabuki-cho\n 0",
+    "home": "1110",
+    "mobile": "2220",
+    "work": "3330",
+    "fax": "44440",
+    "email": "gin-san0@yandex.ru",
+    "email2": "kagura-chan0@yandex.ru",
+    "email3": "shinpachi0@yandex.ru"
+  },
+  {
+    "firstname": "Gintoki1",
+    "lastname": "Sakata1",
+    "nickname": "Gin-san1",
+    "title": "Chief1",
+    "company": "Yorozuya1",
+    "address": "Japan\n Tokyo\n Kabuki-cho\n 1",
+    "home": "1111",
+    "mobile": "2221",
+    "work": "3331",
+    "fax": "44441",
+    "email": "gin-san1@yandex.ru",
+    "email2": "kagura-chan1@yandex.ru",
+    "email3": "shinpachi1@yandex.ru"
+  },
+  {
+    "firstname": "Gintoki2",
+    "lastname": "Sakata2",
+    "nickname": "Gin-san2",
+    "title": "Chief2",
+    "company": "Yorozuya2",
+    "address": "Japan\n Tokyo\n Kabuki-cho\n 2",
+    "home": "1112",
+    "mobile": "2222",
+    "work": "3332",
+    "fax": "44442",
+    "email": "gin-san2@yandex.ru",
+    "email2": "kagura-chan2@yandex.ru",
+    "email3": "shinpachi2@yandex.ru"
+  }
 ]
