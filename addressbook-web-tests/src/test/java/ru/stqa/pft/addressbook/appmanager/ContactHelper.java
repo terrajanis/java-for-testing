@@ -37,11 +37,13 @@ public class ContactHelper extends HelperBase{
         type(By.name("email"), contactInformation.getEmail());
         type(By.name("email2"), contactInformation.getEmail2());
         type(By.name("email3"), contactInformation.getEmail3());
-        if (creation) {
+        attach(By.name("photo"), contactInformation.getPhoto());
+        /*if (creation) {
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactInformation.getGroup());
             } else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
+        */
     }
 
     public void initModification(int index) {
@@ -74,6 +76,7 @@ public class ContactHelper extends HelperBase{
         selectById(contact.getId());
         pressDeleteButton();
         wd.switchTo().alert().accept();
+        wd.findElement(By.cssSelector("div.msgbox"));
         contactCache = null;
     }
 
