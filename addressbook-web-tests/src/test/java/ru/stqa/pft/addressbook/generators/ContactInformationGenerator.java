@@ -78,39 +78,39 @@ public class ContactInformationGenerator {
     private void saveAsJson(List<ContactInformation> contacts, File file) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
         String json = gson.toJson(contacts);
-        Writer writer = new FileWriter(file);
-        writer.write(json);
-        writer.close();
+        try (Writer writer = new FileWriter(file)) {
+            writer.write(json);
+        }
     }
 
     private void saveAsXml(List<ContactInformation> contacts, File file) throws IOException {
         XStream xstream = new XStream();
         xstream.processAnnotations(ContactInformation.class);
         String xml = xstream.toXML(contacts);
-        Writer writer = new FileWriter(file);
-        writer.write(xml);
-        writer.close();
+        try(Writer writer = new FileWriter(file)) {
+            writer.write(xml);
+        }
     }
 
     private void saveAsCsv(List<ContactInformation> contacts, File file) throws IOException {
-        Writer writer = new FileWriter(file);
-        for (ContactInformation contact: contacts) {
-            writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s",
-                    contact.getFirstname(),
-                    contact.getLastname(),
-                    contact.getNickname(),
-                    contact.getTitle(),
-                    contact.getCompany(),
-                    contact.getAddress(),
-                    contact.getHome(),
-                    contact.getMobile(),
-                    contact.getWork(),
-                    contact.getFax(),
-                    contact.getEmail(),
-                    contact.getEmail2(),
-                    contact.getEmail3()));
+        try (Writer writer = new FileWriter(file)) {
+            for (ContactInformation contact : contacts) {
+                writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s",
+                        contact.getFirstname(),
+                        contact.getLastname(),
+                        contact.getNickname(),
+                        contact.getTitle(),
+                        contact.getCompany(),
+                        contact.getAddress(),
+                        contact.getHome(),
+                        contact.getMobile(),
+                        contact.getWork(),
+                        contact.getFax(),
+                        contact.getEmail(),
+                        contact.getEmail2(),
+                        contact.getEmail3()));
+            }
         }
-        writer.close();
 
     }
 }
