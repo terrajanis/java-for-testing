@@ -40,6 +40,7 @@ public class ContactCreationTest extends TestBase {
   public Iterator<Object[]> validContactsFromJson() throws IOException {
     try(BufferedReader reader = new BufferedReader (new FileReader(new File("src/test/resources/contacts.json")))) {
       String json = "";
+
       String line = reader.readLine();
       while (line != null) {
         json += line;
@@ -54,11 +55,11 @@ public class ContactCreationTest extends TestBase {
 
   @Test (dataProvider = "validContactsFromJson")
   public void testNewContact(ContactInformation contact) throws Exception {
-    Contacts before = app.getContactHelper().all();
+    Contacts before = app.getDbHelper().contacts();
     File photo = new File("src/test/resources/stru.jpg");
-    app.getContactHelper().create(contact);
+    app.getContactHelper().create(contact.withPhoto(photo));
     assertThat(app.getContactHelper().count(), equalTo(before.size() + 1));
-    Contacts after = app.getContactHelper().all();
+    Contacts after = app.getDbHelper().contacts();
     assertThat(after, equalTo(
             before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
 

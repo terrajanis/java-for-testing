@@ -4,15 +4,15 @@ package ru.stqa.pft.addressbook.tests;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.models.GroupData;
 import ru.stqa.pft.addressbook.models.Groups;
 
-import java.io.*;
-import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -57,10 +57,10 @@ public class GroupCreationTests extends TestBase {
   @Test (dataProvider = "validGroupsFromJson")
   public void testGroupCreation(GroupData group) throws Exception {
     app.getNavigationHelper().goToGroupPage();
-   Groups before = app.getGroupHelper().all();
+   Groups before = app.getDbHelper().groups();
     app.getGroupHelper().create(group);
       assertThat(app.getGroupHelper().count(), equalTo(before.size() + 1));
-    Groups after = app.getGroupHelper().all();
+    Groups after = app.getDbHelper().groups();
     assertThat(after, equalTo(
             before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
   }
@@ -68,11 +68,11 @@ public class GroupCreationTests extends TestBase {
     @Test
     public void testGroupBadCreation() throws Exception {
         app.getNavigationHelper().goToGroupPage();
-        Groups before = app.getGroupHelper().all();
+        Groups before = app.getDbHelper().groups();
         GroupData group = new GroupData().withName("test'").withHeader("test1").withFooter("test2");
         app.getGroupHelper().create(group);
         assertThat(app.getGroupHelper().count(), equalTo(before.size()));
-        Groups after = app.getGroupHelper().all();
+        Groups after = app.getDbHelper().groups();
         assertThat(after, equalTo(before));
     }
 

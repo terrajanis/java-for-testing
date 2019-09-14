@@ -18,18 +18,19 @@ public class GroupDeletionTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
-    app.getNavigationHelper().goToGroupPage();
-    if(app.getGroupHelper().all().size() == 0) {
-      app.getGroupHelper().create(new GroupData().withName("test").withHeader("test1").withFooter("test2"));
-    }
+      if(app.getDbHelper().groups().size() == 0) {
+          app.getNavigationHelper().goToGroupPage();
+          app.getGroupHelper().create(new GroupData().withName("test").withHeader("test1").withFooter("test2"));
+      }
   }
   @Test
   public void testGroupDeletion() throws Exception {
-   Groups before = app.getGroupHelper().all();
+   Groups before = app.getDbHelper().groups();
+    app.getNavigationHelper().goToGroupPage();
     GroupData deletedGroup = before.iterator().next();
     app.getGroupHelper().delete(deletedGroup);
       assertThat(app.getGroupHelper().count(), equalTo(before.size() - 1));
-    Groups after = app.getGroupHelper().all();
+    Groups after = app.getDbHelper().groups();
     assertThat(after, equalTo(before.without(deletedGroup)));
   }
 

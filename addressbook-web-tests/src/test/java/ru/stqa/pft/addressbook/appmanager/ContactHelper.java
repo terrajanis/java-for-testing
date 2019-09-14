@@ -9,6 +9,7 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.models.ContactInformation;
 import ru.stqa.pft.addressbook.models.Contacts;
 
+import java.io.File;
 import java.util.List;
 
 public class ContactHelper extends HelperBase{
@@ -82,7 +83,8 @@ public class ContactHelper extends HelperBase{
 
     public void modify(ContactInformation modifiedContact, ContactInformation contact) {
         initModificationById(modifiedContact.getId());
-        fillNewContact(contact, false);
+        File photo = new File("src/test/resources/stru.jpg");
+        fillNewContact(contact.withPhoto(photo), false);
         update();
         contactCache = null;
         navigationHelper.goToHomePage();
