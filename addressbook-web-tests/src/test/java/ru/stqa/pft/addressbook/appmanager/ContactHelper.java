@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.models.ContactInformation;
 import ru.stqa.pft.addressbook.models.Contacts;
+import ru.stqa.pft.addressbook.models.GroupData;
 
 import java.io.File;
 import java.util.List;
@@ -39,12 +40,13 @@ public class ContactHelper extends HelperBase{
         type(By.name("email2"), contactInformation.getEmail2());
         type(By.name("email3"), contactInformation.getEmail3());
         attach(By.name("photo"), contactInformation.getPhoto());
-        /*if (creation) {
-            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactInformation.getGroup());
+        if (creation) {
+        Assert.assertTrue(contactInformation.getGroups().size() == 1);
+        if (contactInformation.getGroups().size() > 0)
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactInformation.getGroups().iterator().next().getName());
             } else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
-        */
     }
 
     public void initModification(int index) {
@@ -65,7 +67,7 @@ public class ContactHelper extends HelperBase{
         click(By.xpath("//input[@value='Delete']"));
     }
 
-    public void create(ContactInformation contact) {
+    public void create(ContactInformation contact, boolean creation) {
         navigationHelper.goToAddNewContact();
        fillNewContact(contact, true);
         sumbit();
@@ -141,5 +143,19 @@ public class ContactHelper extends HelperBase{
             contactCache.add(contact);
         }
         return new Contacts(contactCache);
+    }
+
+    public void addContact(ContactInformation contact, GroupData group){
+        selectById(contact.getId());
+        new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(group.getName());
+        click(By.name("add"));
+        click(By.linkText("group page \"" + group.getName() + "\""));
+    }
+
+    public void deleteContact(ContactInformation contact, GroupData group) {
+        new Select(wd.findElement(By.name("group"))).selectByVisibleText(group.getName());
+        selectById(contact.getId());
+        click(By.name("remove"));
+        click(By.linkText("group page \"" + group.getName() + "\""));
     }
 }

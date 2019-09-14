@@ -6,6 +6,7 @@ import com.thoughtworks.xstream.XStream;
 import org.testng.annotations.*;
 import ru.stqa.pft.addressbook.models.ContactInformation;
 import ru.stqa.pft.addressbook.models.Contacts;
+import ru.stqa.pft.addressbook.models.Groups;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -55,9 +56,10 @@ public class ContactCreationTest extends TestBase {
 
   @Test (dataProvider = "validContactsFromJson")
   public void testNewContact(ContactInformation contact) throws Exception {
+      Groups groups = app.getDbHelper().groups();
     Contacts before = app.getDbHelper().contacts();
     File photo = new File("src/test/resources/stru.jpg");
-    app.getContactHelper().create(contact.withPhoto(photo));
+    app.getContactHelper().create(contact.withPhoto(photo).inGroup(groups.iterator().next()), true);
     assertThat(app.getContactHelper().count(), equalTo(before.size() + 1));
     Contacts after = app.getDbHelper().contacts();
     assertThat(after, equalTo(
