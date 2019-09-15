@@ -49,4 +49,13 @@ public Groups groups() {
         session.close();
         return new Contacts(result);
     }
+
+    public Contacts selectContactFromDbById(int id) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        List<ContactInformation> contacts = session.createQuery("from ContactInformation where id = '" + id + "'").list();
+        session.getTransaction().commit();
+        session.close();
+        return new Contacts(contacts);
+    }
 }
