@@ -8,8 +8,12 @@ import ru.stqa.pft.addressbook.models.Contacts;
 import ru.stqa.pft.addressbook.models.GroupData;
 import ru.stqa.pft.addressbook.models.Groups;
 
+import java.util.Iterator;
+import java.util.Objects;
+
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.testng.Assert.assertFalse;
 
 public class DeleteContactFromGroupTest extends TestBase {
 
@@ -43,16 +47,13 @@ public class DeleteContactFromGroupTest extends TestBase {
     @Test
     public void deleteContactFromGroup(){
         Groups groups = app.getDbHelper().groups();
-        GroupData linkedGroup = groups.iterator().next();
         Contacts contacts = app.getDbHelper().contacts();
         ContactInformation deletedContact = contacts.iterator().next();
         Groups groupsOfDeletedContact = deletedContact.getGroups();
-        if (deletedContact.getGroups().equals(null)) {
-            app.getContactHelper().addContact(deletedContact, linkedGroup);
+        if (Objects.equals(deletedContact.getGroups(), null)) {
+            app.getContactHelper().addContact(deletedContact, groups.iterator().next());
         } // проверяем, что у контакта есть группы, если нет, то привязываем контакт к группе
-       if (!deletedContact.getGroups().equals(linkedGroup)) {
-           app.getContactHelper().addContact(deletedContact, linkedGroup);
-        } // проверяем, та ли у контакта группа, которую мы получили из множества, если нет, то добавляем ту
+        GroupData linkedGroup = groupsOfDeletedContact.iterator().next();
         app.getContactHelper().deleteContact(deletedContact, linkedGroup);
         ContactInformation contactsAfter = app.getDbHelper().selectContactFromDbById(deletedContact.getId()).iterator().next();
         Groups groupsOfDeletedContactAfter = contactsAfter.getGroups();
