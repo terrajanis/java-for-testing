@@ -50,7 +50,7 @@ public class DeleteContactFromGroupTest extends TestBase {
         Contacts contacts = app.getDbHelper().contacts();
         ContactInformation deletedContact = contacts.iterator().next();
         Groups groupsOfDeletedContact = deletedContact.getGroups();
-        if (Objects.equals(deletedContact.getGroups(), null)) {
+        if (deletedContact.getGroups().size() == 0) {
             app.getContactHelper().addContact(deletedContact, groups.iterator().next());
         } // проверяем, что у контакта есть группы, если нет, то привязываем контакт к группе
         GroupData linkedGroup = groupsOfDeletedContact.iterator().next();
