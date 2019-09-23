@@ -1,11 +1,9 @@
 package ru.stqa.pft.mantis.tests;
 
 import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
-import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import ru.stqa.pft.mantis.appmanager.HttpSession;
 import ru.stqa.pft.mantis.models.MailMessage;
 import ru.stqa.pft.mantis.models.UserData;
 
@@ -29,14 +27,16 @@ public class ChangePasswordTests extends TestBase {
             app.registration().finish(confirmationLink, password);
         }
     }
+    @BeforeMethod
     public void startMailServer() {
         app.mail().start();
     }
 
     @Test
     public void changePassword() throws IOException, MessagingException {
+        app.change().start(app.getProperty("web.adminLogin"),app.getProperty("web.adminPassword"));
         UserData user = app.db().usersExceptAdmin().iterator().next();
-        app.change().resetPassword(user);
+        app.change().password(user);
         List<MailMessage> mailMessages = app.mail().waitForMail(1, 10000);
         String confirmationLink = app.registration().findConfirmationLink(mailMessages, user.getEmail());
         String newPassword = "newpassword";

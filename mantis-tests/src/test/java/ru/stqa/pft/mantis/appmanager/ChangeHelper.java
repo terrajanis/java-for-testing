@@ -11,10 +11,16 @@ public class ChangeHelper extends HelperBase {
         super(app);
     }
 
-    public void resetPassword(UserData user) throws IOException {
-        HttpSession session = app.newSession();
-        session.login("administrator","root");
-        click(By.xpath("//li[6]/a/span"));
+    public void start(String username, String password) {
+        wd.get(app.getProperty("web.baseUrl") + "/login_page.php");
+        type(By.name("username"), username);
+        click(By.cssSelector("input[value='Войти']"));
+        type(By.name("password"), password);
+        click(By.cssSelector("input[value='Войти']"));
+    }
+
+    public void password(UserData user) throws IOException {
+        click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Управление'])[1]/preceding::i[1]"));
         click(By.linkText("Управление пользователями"));
         click(By.xpath(String.format("//a[@href='manage_user_edit_page.php?user_id=%s']", user.getId())));
         click(By.cssSelector("input[value='Сбросить пароль']"));
