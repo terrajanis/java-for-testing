@@ -85,7 +85,7 @@ public class ContactHelper extends HelperBase{
 
     public void modify(ContactInformation modifiedContact, ContactInformation contact) {
         initModificationById(modifiedContact.getId());
-        File photo = new File("src/test/resources/stru.jpg");
+        File photo = new File("src/rest/resources/stru.jpg");
         fillNewContact(contact.withPhoto(photo), false);
         update();
         contactCache = null;

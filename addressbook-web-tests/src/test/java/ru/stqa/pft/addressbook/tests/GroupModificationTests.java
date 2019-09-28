@@ -19,7 +19,7 @@ public class GroupModificationTests extends TestBase {
     public void ensurePreconditions() {
         if(app.getDbHelper().groups().size() == 0) {
         app.getNavigationHelper().goToGroupPage();
-        app.getGroupHelper().create(new GroupData().withName("test").withHeader("test1").withFooter("test2"));
+        app.getGroupHelper().create(new GroupData().withName("rest").withHeader("test1").withFooter("test2"));
         }
     }
 
