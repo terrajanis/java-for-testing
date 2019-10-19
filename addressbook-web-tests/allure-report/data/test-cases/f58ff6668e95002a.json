@@ -1,0 +1,122 @@
+{
+  "uid" : "f58ff6668e95002a",
+  "name" : "testGroupCreation",
+  "fullName" : "ru.stqa.pft.addressbook.tests.GroupCreationTests.testGroupCreation",
+  "historyId" : "3e7ae18127799dfa9737fc23160bc433",
+  "time" : {
+    "start" : 1571503714173,
+    "stop" : 1571503715518,
+    "duration" : 1345
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "beforeStages" : [ {
+    "name" : "logTestStart",
+    "time" : {
+      "start" : 1571503714171,
+      "stop" : 1571503714171,
+      "duration" : 0
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "stepsCount" : 0,
+    "hasContent" : false
+  }, {
+    "name" : "setUp",
+    "time" : {
+      "start" : 1571503648941,
+      "stop" : 1571503706088,
+      "duration" : 57147
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "stepsCount" : 0,
+    "hasContent" : false
+  } ],
+  "afterStages" : [ {
+    "name" : "logTestStop",
+    "time" : {
+      "start" : 1571503715519,
+      "stop" : 1571503715520,
+      "duration" : 1
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "stepsCount" : 0,
+    "hasContent" : false
+  }, {
+    "name" : "tearDown",
+    "time" : {
+      "start" : 1571503719390,
+      "stop" : 1571503720963,
+      "duration" : 1573
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "stepsCount" : 0,
+    "hasContent" : false
+  } ],
+  "labels" : [ {
+    "name" : "package",
+    "value" : "ru.stqa.pft.addressbook.tests.GroupCreationTests"
+  }, {
+    "name" : "testClass",
+    "value" : "ru.stqa.pft.addressbook.tests.GroupCreationTests"
+  }, {
+    "name" : "testMethod",
+    "value" : "testGroupCreation"
+  }, {
+    "name" : "parentSuite",
+    "value" : "Suite1"
+  }, {
+    "name" : "suite",
+    "value" : "Groups"
+  }, {
+    "name" : "subSuite",
+    "value" : "ru.stqa.pft.addressbook.tests.GroupCreationTests"
+  }, {
+    "name" : "host",
+    "value" : "ASUS"
+  }, {
+    "name" : "thread",
+    "value" : "6588@ASUS.Test worker(10)"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "arg0",
+    "value" : "GroupData{id='0', name='test 1'}"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "f58ff6668e95002a.json",
+  "parameterValues" : [ "GroupData{id='0', name='test 1'}" ]
+}

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.stqa.pft.addressbook.tests.GroupModificationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-10-19T16:48:37" hostname="ASUS" time="1.591">
+  <properties/>
+  <testcase name="testGroupModification" classname="ru.stqa.pft.addressbook.tests.GroupModificationTests" time="1.591"/>
+  <system-out><![CDATA[19:48:36.946 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start rest testGroupModification with parameters []
+Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_
+GroupData{id='11', name='test'}
+GroupData{id='17', name='test0'}
+GroupData{id='18', name='test'}
+GroupData{id='25', name='test'}
+GroupData{id='26', name='test0'}
+GroupData{id='27', name='test'}
+GroupData{id='32', name='test0'}
+GroupData{id='33', name='test0'}
+GroupData{id='34', name='test1'}
+GroupData{id='35', name='test'}
+GroupData{id='36', name='test0'}
+GroupData{id='37', name='test1'}
+GroupData{id='38', name='test 0'}
+GroupData{id='39', name='test 1'}
+GroupData{id='40', name='test 2'}
+GroupData{id='41', name='test0'}
+GroupData{id='44', name='test0'}
+GroupData{id='45', name='test 1'}
+GroupData{id='46', name='test 2'}
+GroupData{id='49', name='test 2'}
+GroupData{id='50', name='test 0'}
+GroupData{id='51', name='test 1'}
+GroupData{id='52', name='test 2'}
+GroupData{id='53', name='test 0'}
+GroupData{id='54', name='test 1'}
+GroupData{id='55', name='test 2'}
+GroupData{id='56', name='test0'}
+GroupData{id='57', name='test 1'}
+GroupData{id='59', name='test 0'}
+GroupData{id='60', name='test 1'}
+GroupData{id='61', name='test 2'}
+GroupData{id='63', name='test0'}
+GroupData{id='65', name='test 0'}
+GroupData{id='66', name='test 1'}
+GroupData{id='67', name='test 2'}
+GroupData{id='68', name='test 0'}
+GroupData{id='69', name='test 1'}
+GroupData{id='70', name='test 2'}
+GroupData{id='71', name='test0'}
+GroupData{id='72', name='test 1'}
+GroupData{id='73', name='test 2'}
+GroupData{id='74', name='test 0'}
+GroupData{id='75', name='test 1'}
+GroupData{id='76', name='test 2'}
+GroupData{id='77', name='test 0'}
+GroupData{id='78', name='test 1'}
+GroupData{id='79', name='test 2'}
+GroupData{id='80', name='test 0'}
+GroupData{id='81', name='test 1'}
+GroupData{id='82', name='test 2'}
+GroupData{id='83', name='test 0'}
+GroupData{id='84', name='test 1'}
+GroupData{id='85', name='test 2'}
+GroupData{id='86', name='test 0'}
+GroupData{id='87', name='test 1'}
+GroupData{id='88', name='test 2'}
+GroupData{id='89', name='test 0'}
+GroupData{id='90', name='test 1'}
+GroupData{id='91', name='test 2'}
+Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_
+GroupData{id='11', name='test'}
+GroupData{id='17', name='test0'}
+GroupData{id='18', name='test'}
+GroupData{id='25', name='test'}
+GroupData{id='26', name='test0'}
+GroupData{id='27', name='test'}
+GroupData{id='32', name='test0'}
+GroupData{id='33', name='test0'}
+GroupData{id='34', name='test1'}
+GroupData{id='35', name='test'}
+GroupData{id='36', name='test0'}
+GroupData{id='37', name='test1'}
+GroupData{id='38', name='test 0'}
+GroupData{id='39', name='test 1'}
+GroupData{id='40', name='test 2'}
+GroupData{id='41', name='test0'}
+GroupData{id='44', name='test0'}
+GroupData{id='45', name='test 1'}
+GroupData{id='46', name='test 2'}
+GroupData{id='49', name='test 2'}
+GroupData{id='50', name='test 0'}
+GroupData{id='51', name='test 1'}
+GroupData{id='52', name='test 2'}
+GroupData{id='53', name='test 0'}
+GroupData{id='54', name='test 1'}
+GroupData{id='55', name='test 2'}
+GroupData{id='56', name='test0'}
+GroupData{id='57', name='test 1'}
+GroupData{id='59', name='test 0'}
+GroupData{id='60', name='test 1'}
+GroupData{id='61', name='test 2'}
+GroupData{id='63', name='test0'}
+GroupData{id='65', name='test 0'}
+GroupData{id='66', name='test 1'}
+GroupData{id='67', name='test 2'}
+GroupData{id='68', name='test 0'}
+GroupData{id='69', name='test 1'}
+GroupData{id='70', name='test 2'}
+GroupData{id='71', name='test0'}
+GroupData{id='72', name='test 1'}
+GroupData{id='73', name='test 2'}
+GroupData{id='74', name='test 0'}
+GroupData{id='75', name='test 1'}
+GroupData{id='76', name='test 2'}
+GroupData{id='77', name='test 0'}
+GroupData{id='78', name='test 1'}
+GroupData{id='79', name='test 2'}
+GroupData{id='80', name='test 0'}
+GroupData{id='81', name='test 1'}
+GroupData{id='82', name='test 2'}
+GroupData{id='83', name='test 0'}
+GroupData{id='84', name='test 1'}
+GroupData{id='85', name='test 2'}
+GroupData{id='86', name='test 0'}
+GroupData{id='87', name='test 1'}
+GroupData{id='88', name='test 2'}
+GroupData{id='89', name='test 0'}
+GroupData{id='90', name='test 1'}
+GroupData{id='91', name='test 2'}
+Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_
+GroupData{id='11', name='test'}
+GroupData{id='17', name='test0'}
+GroupData{id='18', name='test'}
+GroupData{id='25', name='test'}
+GroupData{id='26', name='test0'}
+GroupData{id='27', name='test'}
+GroupData{id='32', name='test0'}
+GroupData{id='33', name='test0'}
+GroupData{id='34', name='test1'}
+GroupData{id='35', name='test'}
+GroupData{id='36', name='test0'}
+GroupData{id='37', name='test1'}
+GroupData{id='38', name='test 0'}
+GroupData{id='39', name='test 1'}
+GroupData{id='40', name='test 2'}
+GroupData{id='41', name='test0'}
+GroupData{id='44', name='test0'}
+GroupData{id='45', name='test 1'}
+GroupData{id='46', name='test 2'}
+GroupData{id='49', name='test 2'}
+GroupData{id='50', name='test 0'}
+GroupData{id='51', name='test 1'}
+GroupData{id='52', name='test 2'}
+GroupData{id='53', name='test 0'}
+GroupData{id='54', name='test 1'}
+GroupData{id='55', name='test 2'}
+GroupData{id='56', name='test0'}
+GroupData{id='57', name='test 1'}
+GroupData{id='59', name='test 0'}
+GroupData{id='60', name='test 1'}
+GroupData{id='61', name='test 2'}
+GroupData{id='63', name='test0'}
+GroupData{id='65', name='test 0'}
+GroupData{id='66', name='test 1'}
+GroupData{id='67', name='test 2'}
+GroupData{id='68', name='test 0'}
+GroupData{id='69', name='test 1'}
+GroupData{id='70', name='test 2'}
+GroupData{id='71', name='test0'}
+GroupData{id='72', name='test 1'}
+GroupData{id='73', name='test0'}
+GroupData{id='74', name='test 0'}
+GroupData{id='75', name='test 1'}
+GroupData{id='76', name='test 2'}
+GroupData{id='77', name='test 0'}
+GroupData{id='78', name='test 1'}
+GroupData{id='79', name='test 2'}
+GroupData{id='80', name='test 0'}
+GroupData{id='81', name='test 1'}
+GroupData{id='82', name='test 2'}
+GroupData{id='83', name='test 0'}
+GroupData{id='84', name='test 1'}
+GroupData{id='85', name='test 2'}
+GroupData{id='86', name='test 0'}
+GroupData{id='87', name='test 1'}
+GroupData{id='88', name='test 2'}
+GroupData{id='89', name='test 0'}
+GroupData{id='90', name='test 1'}
+GroupData{id='91', name='test 2'}
+19:48:38.615 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Stop rest testGroupModification with parameters []
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

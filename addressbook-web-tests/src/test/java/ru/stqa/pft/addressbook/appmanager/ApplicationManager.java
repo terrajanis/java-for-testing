@@ -96,4 +96,8 @@ public class ApplicationManager {
     public DbHelper getDbHelper() {
         return dbHelper;
     }
+
+    public byte[] takeScreenshot() {
+       return  ((TakesScreenshot) wd).getScreenshotAs(OutputType.BYTES);
+    }
 }

@@ -1,0 +1,1 @@
+{"uuid":"6ce74a84-9f2a-4d2d-95e9-45a4652bb4e5","name":"ru.stqa.pft.addressbook.tests.GroupDeletionTests.ensurePreconditions","description":"","start":1571503718639,"stop":1571503718670,"children":["75bfd1cb-8521-4eb6-b54d-3155a0e6f8f5"],"befores":[{"name":"ensurePreconditions","status":"passed","stage":"finished","description":"","start":1571503718639,"stop":1571503718670}]}

@@ -1,0 +1,7 @@
+"Status","Name","Duration in ms","Description"
+"passed","ru.stqa.pft.addressbook.tests.GroupCreationTests.testGroupCreation","1146",""
+"passed","ru.stqa.pft.addressbook.tests.GroupModificationTests.testGroupModification","1591",""
+"passed","ru.stqa.pft.addressbook.tests.GroupCreationTests.testGroupBadCreation","5398",""
+"passed","ru.stqa.pft.addressbook.tests.GroupCreationTests.testGroupCreation","1540",""
+"passed","ru.stqa.pft.addressbook.tests.GroupCreationTests.testGroupCreation","1345",""
+"passed","ru.stqa.pft.addressbook.tests.GroupDeletionTests.testGroupDeletion","672",""
